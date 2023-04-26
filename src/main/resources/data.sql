@@ -1,0 +1,5 @@
+INSERT INTO brands (brand_id, name) VALUES (1, 'ZARA');
+INSERT INTO products (id, brand_id, start_date, end_date, price_list, product_id, price, curr, priority) VALUES (1, 1, parseDateTime('2020-06-14 00:00:00', 'yyyy-MM-dd HH:mm:ss'), parseDateTime('2020-12-31 23:59:59', 'yyyy-MM-dd HH:mm:ss'), 1, 35455, 35.50, 'EUR', 0);
+INSERT INTO products (id, brand_id, start_date, end_date, price_list, product_id, price, curr, priority) VALUES (2, 1, parseDateTime('2020-06-14 15:00:00', 'yyyy-MM-dd HH:mm:ss'), parseDateTime('2020-06-14 18:30:00', 'yyyy-MM-dd HH:mm:ss'), 2, 35455, 25.45, 'EUR', 1);
+INSERT INTO products (id, brand_id, start_date, end_date, price_list, product_id, price, curr, priority) VALUES (3, 1, parseDateTime('2020-06-15 00:00:00', 'yyyy-MM-dd HH:mm:ss'), parseDateTime('2020-06-15 11:00:00', 'yyyy-MM-dd HH:mm:ss'), 3, 35455, 30.50, 'EUR', 1);
+INSERT INTO products (id, brand_id, start_date, end_date, price_list, product_id, price, curr, priority) VALUES (4, 1, parseDateTime('2020-06-15 16:00:00', 'yyyy-MM-dd HH:mm:ss'), parseDateTime('2020-12-31 23:59:59', 'yyyy-MM-dd HH:mm:ss'), 4, 35455, 38.95, 'EUR', 1);

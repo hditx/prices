@@ -26,8 +26,10 @@ dependencies {
 	runtimeOnly("com.h2database:h2")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.mockito:mockito-all:1.10.19")
 }
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+	jvmArgs = listOf("--add-opens=java.base/java.lang=ALL-UNNAMED")
 }
