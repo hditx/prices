@@ -18,9 +18,9 @@ public class FindPrices {
         this.pricesRepository = pricesRepository;
         this.brandRepository = brandRepository;
     }
-    public List<Product> invoke(ProductCriteria productCriteria) throws ParseException {
+    public List<PricesCommand> invoke(ProductCriteria productCriteria) throws ParseException {
         Date date = parseDate(productCriteria.getDate());
-        return pricesRepository
+        var product = pricesRepository
                 .findByProductIdAndBrandIdAndStartDateLessThanEqualAndEndDateGreaterThanEqual(
                     productCriteria.getProduct(),
                     getBrand(productCriteria.getBrand()),
@@ -29,6 +29,22 @@ public class FindPrices {
                 )
                 .stream()
                 .filter(item -> item.getPriority() == 1L)
+                .toList();
+        return parseToCommand(product);
+    }
+
+    private List<PricesCommand> parseToCommand(List<Product> products) {
+        return products
+                .stream()
+                .map(product ->PricesCommand
+                .builder()
+                .price(product.getPrice())
+                .priceList(product.getPriceList())
+                .productId(product.getProductId())
+                .brandId(product.getBrandId().getBrandId())
+                .startDate(product.getStartDate().toString())
+                .endDate(product.getEndDate().toString())
+                .build())
                 .toList();
     }
 

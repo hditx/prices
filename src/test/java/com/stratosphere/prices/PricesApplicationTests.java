@@ -6,6 +6,7 @@ import com.stratosphere.prices.domain.BrandRepository;
 import com.stratosphere.prices.domain.PricesRepository;
 import com.stratosphere.prices.application.ProductCriteria;
 import com.stratosphere.prices.mothers.BrandMother;
+import com.stratosphere.prices.mothers.PricesMother;
 import com.stratosphere.prices.mothers.ProductCriteriaMother;
 import com.stratosphere.prices.mothers.ProductMother;
 import org.junit.jupiter.api.Assertions;
@@ -73,9 +74,9 @@ class PricesApplicationTests {
 				format.parse(productCriteria.getDate()))
 		).thenReturn(ProductMother.generateProductList());
 
-		var product = ProductMother.generateProduct();
-		var list = findPrices.invoke(productCriteria);
-		Assertions.assertEquals(product.getPrice(), list.get(0).getPrice());
+		var price = PricesMother.generatePricesCommand();
+		var pricesList = findPrices.invoke(productCriteria);
+		Assertions.assertEquals(price.getPrice(), pricesList.get(0).getPrice());
 	}
 
 }

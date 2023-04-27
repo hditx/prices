@@ -9,7 +9,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Setter
 @Getter
-public class ProductCriteria implements Serializable {
+public final class ProductCriteria implements Serializable {
     private String date;
     private Long brand;
     private Long product;

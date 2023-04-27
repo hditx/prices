@@ -31,4 +31,11 @@ public class GetProductController {
                 .status(HttpStatus.OK)
                 .body(findPrices.invoke(criteria));
     }
+
+    @GetMapping("/test")
+    public ResponseEntity<?> test(ProductCriteria criteria) throws ParseException {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body("Hola");
+    }
 }

@@ -8,6 +8,7 @@ La API cuenta con el siguiente stack
 - H2 DataBase 
 - JUnit
 - Mockito
+- Lombook
 
 Notas: Se tuvo que hacer configuraciones en el gradle.kts
 para que puedan ejecutarse los test.
