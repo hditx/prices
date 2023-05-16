@@ -7,6 +7,8 @@ import com.stratosphere.prices.domain.PricesRepository;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +22,7 @@ public class FindPrices {
     }
     public List<PricesCommand> invoke(ProductCriteria productCriteria) throws ParseException {
         Date date = parseDate(productCriteria.getDate());
+        List<Product> products = new ArrayList<>();
         var product = pricesRepository
                 .findByProductIdAndBrandIdAndStartDateLessThanEqualAndEndDateGreaterThanEqual(
                     productCriteria.getProduct(),
@@ -28,9 +31,10 @@ public class FindPrices {
                     date
                 )
                 .stream()
-                .filter(item -> item.getPriority() == 1L)
-                .toList();
-        return parseToCommand(product);
+                .max(Comparator.comparingLong(Product::getPriority))
+                .get();
+        products.add(product);
+        return parseToCommand(products);
     }
 
     private List<PricesCommand> parseToCommand(List<Product> products) {
